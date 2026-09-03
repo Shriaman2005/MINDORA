@@ -1,4 +1,4 @@
-import { Users, FileText, Palette, LayoutGrid, Music, ListCheck } from "lucide-react";
+import { Users, FileText, Palette, LayoutGrid, Music, ListCheck, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export function MainGameGrid() {
@@ -70,20 +70,21 @@ export function MainGameGrid() {
         </h1>
       </div>
 
-      {/* 2-Column on Mobile, 3-Column on Laptop */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 pt-1">
+      {/* 1-Column List Layout */}
+      <div className="flex flex-col gap-3 pt-1">
         {games.map((game) => (
           <button
             key={game.id}
             onClick={() => game.path && navigate(game.path)}
-            className={`flex flex-col items-center justify-center p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border-2 transition-all duration-200 shadow-xs hover:shadow-lg active:scale-95 text-center min-h-[160px] sm:min-h-[180px] md:min-h-[220px] w-full cursor-pointer group ${game.bg}`}
+            className="w-full flex items-center p-3 sm:p-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-[var(--card-bg)] transition-all duration-200 shadow-xs hover:shadow-md active:scale-95 text-left min-h-[72px] cursor-pointer group"
           >
-            <div className="w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center shadow-xs mb-3 md:mb-4 transition-transform group-hover:scale-110">
+            <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105 ${game.bg}`}>
               {game.icon}
             </div>
-            <h2 className={`text-[20px] md:text-[22px] font-semibold leading-tight px-1 ${game.textColor} dark:text-[var(--foreground)]`}>
+            <h2 className={`text-[19px] sm:text-[20px] font-semibold truncate px-4 flex-1 ${game.textColor} dark:text-[var(--foreground)]`}>
               {game.title}
             </h2>
+            <ChevronRight className="text-slate-400 shrink-0 ml-1" size={24} />
           </button>
         ))}
       </div>
