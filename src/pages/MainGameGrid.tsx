@@ -1,15 +1,17 @@
 import { Users, FileText, LayoutGrid, Music, ListCheck, Eye } from "lucide-react";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 export function MainGameGrid() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const games = [
     {
       id: 1,
-      title: "Who Is This?",
-      label: "Memory",
-      description: "Identify family members & memory photos",
+      title: t("games.whoIsThis"),
+      label: t("games.memory"),
+      description: t("games.identifyFamily"),
       icon: <Users className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 text-[#993C1D]" />,
       bg: "bg-[#FAECE7] border-[#993C1D]/20 hover:bg-[#993C1D]/10",
       textColor: "text-[#993C1D]",
@@ -17,8 +19,8 @@ export function MainGameGrid() {
     },
     {
       id: 2,
-      title: "Story Quiz",
-      label: "Recall",
+      title: t("games.storyQuiz"),
+      label: t("games.recall"),
       description: "Answer fun questions from stories",
       icon: <FileText className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 text-[#185FA5]" />,
       bg: "bg-[#E6F1FB] border-[#185FA5]/20 hover:bg-[#185FA5]/10",
@@ -27,8 +29,8 @@ export function MainGameGrid() {
     },
     {
       id: 3,
-      title: "Daily Routine",
-      label: "Sequencing",
+      title: t("games.dailyRoutine"),
+      label: t("games.sequencing"),
       description: "Recall and organize your daily schedule",
       icon: <ListCheck className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 text-[#0F6E56]" />,
       bg: "bg-[#E1F5EE] border-[#0F6E56]/20 hover:bg-[#0F6E56]/10",
@@ -37,8 +39,8 @@ export function MainGameGrid() {
     },
     {
       id: 4,
-      title: "Word-Sound Memory",
-      label: "Listening",
+      title: t("games.wordSoundMemory"),
+      label: t("games.listening"),
       description: "Listen to melodies and recall words",
       icon: <Music className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 text-[#3B6D11]" />,
       bg: "bg-[#EAF3DE] border-[#3B6D11]/20 hover:bg-[#3B6D11]/10",
@@ -47,8 +49,8 @@ export function MainGameGrid() {
     },
     {
       id: 5,
-      title: "Pattern Recognition",
-      label: "Reasoning",
+      title: t("games.patternRecognition"),
+      label: t("games.reasoning"),
       description: "Match visual patterns and shapes",
       icon: <LayoutGrid className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 text-[#854F0B]" />,
       bg: "bg-[#FAEEDA] border-[#854F0B]/20 hover:bg-[#854F0B]/10",
@@ -57,9 +59,9 @@ export function MainGameGrid() {
     },
     {
       id: 6,
-      title: "Spot the Difference",
-      label: "Focus",
-      description: "Find the changes between two pictures",
+      title: t("games.spotDifference"),
+      label: t("games.focus"),
+      description: t("games.findChanges"),
       icon: <Eye className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 text-[#534AB7]" />,
       bg: "bg-[#EEEDFE] border-[#534AB7]/20 hover:bg-[#534AB7]/10",
       textColor: "text-[#534AB7]",
@@ -72,7 +74,7 @@ export function MainGameGrid() {
       {/* Greeting Header Section */}
       <div className="pt-2 text-center w-full">
         <h1 className="text-[26px] md:text-[28px] font-bold tracking-tight" style={{ color: "var(--foreground)" }}>
-          Welcome Savitri
+          {t("games.welcome", { name: "Savitri" })}
         </h1>
       </div>
 

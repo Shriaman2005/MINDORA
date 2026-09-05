@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Bot, Send, User, Sparkles, PhoneCall, Bell, Grid, RefreshCw, Volume2, Mic } from "lucide-react";
 
 interface Message {
@@ -9,6 +10,7 @@ interface Message {
 }
 
 export function Chatbot() {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -112,11 +114,11 @@ export function Chatbot() {
             text: "Chat reset! How can I assist you now, Savitri?",
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
           }])}
-          title="Reset Conversation"
+          title={t("chatbot.resetTitle")}
           className="p-2.5 rounded-xl bg-white/15 hover:bg-white/25 transition-colors text-white text-[20px] font-semibold flex items-center gap-1.5"
         >
           <RefreshCw size={18} />
-          <span className="hidden sm:inline">Reset</span>
+          <span className="hidden sm:inline">{t("chatbot.reset")}</span>
         </button>
       </div>
 
@@ -186,7 +188,7 @@ export function Chatbot() {
       {/* Suggested Quick Prompts */}
       <div className="p-3 border-t border-purple-100" style={{ backgroundColor: "var(--card-bg)" }}>
         <p className="text-[18px] font-bold tracking-wider mb-2 px-1" style={{ color: "var(--muted)" }}>
-          Suggested Questions:
+          {t("chatbot.suggested")}
         </p>
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
           {quickPrompts.map((prompt, idx) => (
@@ -208,7 +210,7 @@ export function Chatbot() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          placeholder="Ask Mindora Assistant anything..."
+          placeholder={t("chatbot.inputPlaceholder")}
           className="flex-1 bg-slate-100 border-2 border-transparent focus:border-purple-500 focus:bg-white dark:focus:bg-slate-800 rounded-2xl px-4 py-3 text-base sm:text-lg font-medium outline-none transition-all placeholder:text-slate-400"
           style={{ color: "var(--foreground)" }}
         />
@@ -216,7 +218,7 @@ export function Chatbot() {
           onClick={() => handleSend()}
           disabled={!input.trim()}
           className="p-3.5 bg-purple-600 hover:bg-purple-700 disabled:opacity-40 text-white rounded-2xl transition-all shadow-md active:scale-95 flex items-center justify-center flex-shrink-0"
-          aria-label="Send message"
+          aria-label={t("accessibility.sendMessage")}
         >
           <Send size={22} />
         </button>
